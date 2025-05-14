@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Message as MessageType } from "@/types";
 import VisualizationChart from "./VisualizationChart";
 import DataTable from "./DataTable";
+import AnalyticalInsights from "./AnalyticalInsights";
 
 interface MessageProps {
   message: MessageType;
@@ -49,6 +50,12 @@ const Message = ({ message, isLatest }: MessageProps) => {
         {!isUser && message.tableData && (
           <Card className="mt-3 p-4 overflow-x-auto">
             <DataTable data={message.tableData} />
+          </Card>
+        )}
+
+        {!isUser && message.insights && (
+          <Card className="mt-3 p-4">
+            <AnalyticalInsights insights={message.insights} />
           </Card>
         )}
       </div>

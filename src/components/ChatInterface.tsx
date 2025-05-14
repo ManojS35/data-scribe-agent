@@ -16,7 +16,7 @@ const ChatInterface = () => {
     {
       id: uuidv4(),
       role: "assistant",
-      content: "Hello! I'm your DataScribe Assistant. Ask me any business question about your data, and I'll analyze it for you. You can ask about sales trends, profit margins, department performance, product profitability, or customer acquisition.",
+      content: "Hello! I'm your DataScribe Assistant. Ask me any business question about your data, and I'll analyze it for you. You can ask about sales trends, profit margins, department performance, product profitability, customer acquisition, or regional performance with advanced insights.",
       timestamp: new Date(),
     },
   ]);
@@ -36,7 +36,8 @@ const ChatInterface = () => {
   const addAssistantMessage = (
     content: string,
     visualizations?: any[],
-    tableData?: any
+    tableData?: any,
+    insights?: any
   ) => {
     const assistantMessage: MessageType = {
       id: uuidv4(),
@@ -45,6 +46,7 @@ const ChatInterface = () => {
       timestamp: new Date(),
       visualizations,
       tableData,
+      insights,
     };
     setMessages((prev) => [...prev, assistantMessage]);
   };
@@ -62,7 +64,8 @@ const ChatInterface = () => {
         addAssistantMessage(
           result.response, 
           result.visualizations,
-          result.tableData
+          result.tableData,
+          result.insights
         );
         setIsProcessing(false);
       }, 1000);

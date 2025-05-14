@@ -8,6 +8,7 @@ export interface Message {
   timestamp: Date;
   visualizations?: Visualization[];
   tableData?: TableData;
+  insights?: AnalyticalInsights;
 }
 
 export interface Visualization {
@@ -31,4 +32,37 @@ export interface TableData {
 export interface GeneratedQuery {
   sql: string;
   explanation: string;
+}
+
+export interface AnalyticalInsights {
+  regional?: RegionalInsight[];
+  trends?: TrendInsight[];
+  anomalies?: AnomalyInsight[];
+}
+
+export interface RegionalInsight {
+  region: string;
+  metric: string;
+  value: number;
+  trend: 'up' | 'down' | 'stable';
+  percentageChange?: number;
+  comparison?: string;
+}
+
+export interface TrendInsight {
+  metric: string;
+  period: string;
+  direction: 'increasing' | 'decreasing' | 'stable' | 'fluctuating';
+  percentageChange: number;
+  seasonality?: string;
+  forecast?: string;
+}
+
+export interface AnomalyInsight {
+  metric: string;
+  value: number;
+  expectedRange: [number, number];
+  deviation: number;
+  period: string;
+  possibleCause?: string;
 }
