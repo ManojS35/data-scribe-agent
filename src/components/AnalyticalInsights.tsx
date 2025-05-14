@@ -1,6 +1,6 @@
 
 import { AnalyticalInsights as InsightsType } from "@/types";
-import { ArrowTrendingUp, ArrowTrendingDown, Minus, AlertCircle, MapPin, TrendingUp } from "lucide-react";
+import { TrendingUp, TrendingDown, Minus, AlertCircle, MapPin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface AnalyticalInsightsProps {
@@ -26,8 +26,8 @@ const AnalyticalInsights = ({ insights }: AnalyticalInsightsProps) => {
                 <div className="flex justify-between items-center">
                   <span className="text-sm font-medium">{item.region}</span>
                   <Badge variant={item.trend === 'up' ? 'success' : item.trend === 'down' ? 'destructive' : 'default'}>
-                    {item.trend === 'up' && <ArrowTrendingUp className="h-3 w-3 mr-1" />}
-                    {item.trend === 'down' && <ArrowTrendingDown className="h-3 w-3 mr-1" />}
+                    {item.trend === 'up' && <TrendingUp className="h-3 w-3 mr-1" />}
+                    {item.trend === 'down' && <TrendingDown className="h-3 w-3 mr-1" />}
                     {item.trend === 'stable' && <Minus className="h-3 w-3 mr-1" />}
                     {item.percentageChange && `${item.percentageChange > 0 ? '+' : ''}${item.percentageChange}%`}
                   </Badge>
